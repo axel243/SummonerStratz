@@ -1,0 +1,38 @@
+﻿@model RitoAPI.Models.ChampionList
+
+@{
+    ViewData["Title"] = "Champion List";
+}
+
+<h1>ChampionList</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Champion
+            </th>
+            <th>
+                Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Data) {
+    var imageFile = $"{item.Key}.png";
+        <tr>
+            <td>
+              <img src="~/ChampionImg/champions/@imageFile" />
+            </td>
+            <td>
+                @Html.ActionLink(item.Key, "ShowChampion", "Champion", new { id = item.Value.id }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value.title)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

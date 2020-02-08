@@ -1,0 +1,12 @@
+﻿@model RitoAPI.Models.Champion
+@{
+    ViewData["Title"] = "Champion";
+    
+}
+@foreach (var item in Model.Data) {
+     var imageFile = $"{item.Key}.png";
+<img src="~/ChampionImg/champions/@imageFile"/>
+<h1>@item.Value.id</h1>
+<h2>@item.Value.title</h2>
+<p>@item.Value.lore</p>
+}

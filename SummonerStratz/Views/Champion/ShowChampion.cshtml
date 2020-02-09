@@ -1,12 +1,20 @@
 ﻿@model RitoAPI.Models.Champion
 @{
     ViewData["Title"] = "Champion";
-    
+
 }
-@foreach (var item in Model.Data) {
-     var imageFile = $"{item.Key}.png";
-<img src="~/ChampionImg/champions/@imageFile"/>
-<h1>@item.Value.id</h1>
-<h2>@item.Value.title</h2>
-<p>@item.Value.lore</p>
+@foreach (var item in Model.Data)
+{
+    var championIcon = $"{item.Key}.png";
+    var pIcon = $"{item.Key}_P.png";
+    var pIcon2 = $"{item.Key}_Passive.png";
+    <h1 style="display: inline" >@item.Value.id</h1> 
+    
+    <img style="display:block" src="http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/@championIcon" />
+    <br />
+    <img style="display:block" src="http://ddragon.leagueoflegends.com/cdn/10.3.1/img/passive/@pIcon" onerror="this.onerror=null; this.src='http://ddragon.leagueoflegends.com/cdn/10.3.1/img/passive/@pIcon2'" />
+    <br />
+
+    <b>@item.Value.id @item.Value.title</b>
+    <p>@item.Value.lore</p>
 }
